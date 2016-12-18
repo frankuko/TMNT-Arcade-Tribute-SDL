@@ -16,6 +16,7 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	// idle animation (just the ship)
 	idle.frames.push_back({66, 1, 32, 14});
 
+
 	// move upwards
 	up.frames.push_back({100, 1, 32, 14});
 	up.frames.push_back({132, 0, 32, 14});
