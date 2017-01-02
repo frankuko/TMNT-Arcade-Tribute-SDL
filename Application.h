@@ -18,6 +18,7 @@ class ModuleParticles;
 class ModulePlayer;
 class ModuleSceneIntro;
 class ModuleSceneSpace;
+class ModuleSceneLevel;
 
 class Application
 {
@@ -44,6 +45,7 @@ public:
 	ModulePlayer* player;
 	ModuleSceneIntro* scene_intro;
 	ModuleSceneSpace* scene_space;
+	ModuleSceneLevel* scene_level;
 
 private:
 
