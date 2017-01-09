@@ -70,6 +70,18 @@
     <ClInclude Include="ModuleSceneLevel.h">
       <Filter>Game Modules</Filter>
     </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="EventData.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateMachine.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -116,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneLevel.cpp">
       <Filter>Game Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateMachine.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

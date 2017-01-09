@@ -1,0 +1,7 @@
+//        (Enum        , Function       )
+PLAYER_STATE(ST_UNDEFINED, Undefined)
+PLAYER_STATE(ST_HEALTHY, Healthy)
+PLAYER_STATE(ST_DAMAGED, Damaged)
+PLAYER_STATE(ST_DEAD, Dead)
+PLAYER_STATE(ST_ATTACKING, Attacking)
+PLAYER_STATE(ST_JUMPING, Jumping)
