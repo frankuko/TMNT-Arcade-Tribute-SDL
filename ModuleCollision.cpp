@@ -13,30 +13,42 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_WALL][COLLIDER_ENEMY_SHOT] = true;
+	matrix[COLLIDER_WALL][COLLIDER_ENEMY_WEAPON] = true;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_WEAPON] = true;
 
 	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY_WEAPON] = false;
+
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_WALL] = false;
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_ENEMY_WEAPON][COLLIDER_ENEMY_WEAPON] = false;
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY_WEAPON] = false;
 
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY_WEAPON] = false;
 }
 
 // Destructor
@@ -130,6 +142,18 @@ Collider* ModuleCollision::AddCollider(const SDL_Rect& rect, COLLIDER_TYPE type,
 	colliders.push_back(ret);
 
 	return ret;
+}
+
+Collider* ModuleCollision::RemoveCollider(Collider * collider)
+{
+	if (collider != nullptr)
+	{
+		colliders.remove(collider);
+		RELEASE(collider);
+	}
+
+
+	return nullptr;
 }
 
 // -----------------------------------------------------

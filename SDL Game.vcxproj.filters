@@ -82,6 +82,12 @@
     <ClInclude Include="PlayerState.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Game Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -133,6 +139,15 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStateMachine.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.h">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

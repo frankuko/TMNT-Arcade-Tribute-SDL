@@ -19,7 +19,27 @@ public:
 	bool CleanUp();
 
 public:
-
+	enum State
+	{
+		IDLE,
+		WALKRIGTH,
+		WALKUP,
+		JUMP_INI,
+		JUMPING,
+		JUMP_END,
+		ATTACK_JMP,
+		ATTACKING,
+		ATTACKING_2,
+		ATTACKING_3,
+		ATTACKING_4,
+		BEING_HIT,
+		BEING_HIT_2_INI,
+		BEING_HIT_2,
+		BEING_HIT_2_END,
+		KNOCKED,
+		DEAD,
+		UNKNOWN
+	};
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Collider* collider = nullptr;
@@ -30,7 +50,7 @@ public:
 	Animation right;
 
 	//State Machine for the player
-	PlayerStateMachine stateMachine;
+	State stateMachine;
 
 	// Animations 
 	Animation kick;

@@ -18,28 +18,41 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/particles.png");
+	graphics = App->textures->Load("TMNT/stage_animation.png");
+
+	LOG("Loading particles");
+	graphics = App->textures->Load("rtype/stagepart.png");
+
+	//fire1 
+	fire1.particle_anim.frames.push_back({ 17, 430, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 335, 430, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 17, 495, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 335, 495, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 17, 560, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 335, 560, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 710, 533, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 1029, 533, 304, 65 });
+	fire1.particle_anim.loop = true;
+	fire1.particle_anim.speed = 0.09f;
+
+	//fire2
+	fire2.particle_anim.frames.push_back({ 335, 560, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 17, 560, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 335, 495, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 17, 495, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 335, 430, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 17, 430, 304, 65 });
+	fire2.particle_anim.loop = true;
+	fire2.particle_anim.speed = 0.09f;
+
+	//ninja attack
+	shuriken.particle_anim.frames.push_back({ 131, 329, 12, 12 });
+	shuriken.particle_anim.frames.push_back({ 155, 353, 12, 12 });
+	shuriken.particle_anim.frames.push_back({ 180, 328, 12, 12 });
+	shuriken.particle_anim.loop = true;
+	shuriken.particle_anim.speed = 0.2f;
 
 
-	// TODO 2: Create a prototype for the laser particle
-	// audio: rtype/laser.wav
-	// coords: {232, 103, 16, 12}; {249, 103, 16, 12};
-	laser.particle_anim.frames.push_back({ 232, 103, 16, 12 });
-	laser.particle_anim.frames.push_back({ 249, 103, 16, 12 });
-	laser.particle_anim.speed = 0.05f;
-	laser.speed.x = 7;
-	laser.time = 1000;
-	laser.fx = App->audio->LoadFx("rtype/laser.wav");
-
-	// TODO 12: Create a new "Explosion" particle 
-	// audio: rtype/explosion.wav
-	// coords: {274, 296, 33, 30}; {313, 296, 33, 30}; {346, 296, 33, 30}; {382, 296, 33, 30}; {419, 296, 33, 30}; {457, 296, 33, 30};
-	explosion.particle_anim.frames.push_back({ 274, 296, 33, 30 });
-	explosion.particle_anim.frames.push_back({ 313, 296, 33, 30 });
-	explosion.particle_anim.frames.push_back({ 346, 296, 33, 30 });
-	explosion.particle_anim.frames.push_back({ 382, 296, 33, 30 });
-	explosion.particle_anim.frames.push_back({ 419, 296, 33, 30 });
-	explosion.particle_anim.frames.push_back({ 457, 296, 33, 30 });
 
 	return true;
 }

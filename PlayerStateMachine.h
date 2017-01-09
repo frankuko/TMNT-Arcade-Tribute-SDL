@@ -2,6 +2,7 @@
 #define _PLAYERSTATEMACHINE_H_
 
 #include "StateMachine.h"
+#include "Application.h"
 
 class PlayerStateMachine : public StateMachine {
 public:

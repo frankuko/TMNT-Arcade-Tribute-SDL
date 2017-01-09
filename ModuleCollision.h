@@ -13,6 +13,7 @@ enum COLLIDER_TYPE
 	COLLIDER_WALL,
 	COLLIDER_PLAYER,
 	COLLIDER_ENEMY,
+	COLLIDER_ENEMY_WEAPON,
 	COLLIDER_PLAYER_SHOT,
 	COLLIDER_ENEMY_SHOT,
 
@@ -57,6 +58,7 @@ public:
 	bool CleanUp();
 
 	Collider* AddCollider(const SDL_Rect& rect,COLLIDER_TYPE type, Module* callback = nullptr);
+	Collider* RemoveCollider(Collider* collider);
 	void DebugDraw();
 
 private:

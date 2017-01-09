@@ -53,8 +53,9 @@ private:
 public:
 
 	// prototype particles go here ...
-	Particle explosion;
-	Particle laser;
+	Particle fire1;
+	Particle fire2;
+	Particle shuriken;
 };
 
 #endif // __MODULEPARTICLES_H__
