@@ -48,6 +48,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Collider* collider = nullptr;
+	Collider* feetCollider = nullptr;
 	Animation idle;
 	Animation up;
 	Animation down;
@@ -84,10 +85,11 @@ public:
 	bool destroyed = false;
 	bool sameDirection = false;
 	int hits = 0;
-	Direction facing = RIGHT;
+	Direction facing = LEFT;
 	
 
 	void OnCollision(Collider* c1, Collider* c2);
+	void setCurrentAnimation(Animation* anim);
 };
 
 #endif

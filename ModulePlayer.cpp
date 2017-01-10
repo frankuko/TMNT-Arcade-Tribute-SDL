@@ -38,33 +38,19 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	idle.speed = 0.05f;
 
 	
-	// move upwards
-	up.frames.push_back({ 255, 231, 85, 77 });
-	up.frames.push_back({ 340, 231, 85, 77 });
-	up.frames.push_back({ 425, 231, 85, 75 });
-	up.frames.push_back({ 510, 231, 85, 77 });
-	up.frames.push_back({ 595, 231, 85, 77 });
-	up.frames.push_back({ 680, 231, 85, 77 });
-	up.frames.push_back({ 765, 231, 85, 77 });
-	up.frames.push_back({ 850, 231, 85, 77 });
-	up.frames.push_back({ 0, 308, 85, 77 });
-	up.frames.push_back({ 85, 308, 85, 77 });
-	up.frames.push_back({ 170, 308, 85, 77 });
-	up.frames.push_back({ 255, 308, 85, 77 });
-	up.loop = true;
-	up.speed = 0.25f;
+
 
 	// move right
-	upright.frames.push_back({ 425,462,85,77 });
-	upright.frames.push_back({ 510,462,85,77 });
-	upright.frames.push_back({ 595,462,85,77 });
-	upright.frames.push_back({ 680,462,85,77 });
-	upright.frames.push_back({ 765,462,85,77 });
-	upright.frames.push_back({ 0,539,85,77 });
-	upright.frames.push_back({ 85,539,85,77 });
-	upright.frames.push_back({ 170,539,85,77 });
-	upright.loop = true;
-	upright.speed = 0.15f;
+	up.frames.push_back({ 425,462,85,77 });
+	up.frames.push_back({ 510,462,85,77 });
+	up.frames.push_back({ 595,462,85,77 });
+	up.frames.push_back({ 680,462,85,77 });
+	up.frames.push_back({ 765,462,85,77 });
+	up.frames.push_back({ 0,539,85,77 });
+	up.frames.push_back({ 85,539,85,77 });
+	up.frames.push_back({ 170,539,85,77 });
+	up.loop = true;
+	up.speed = 0.15f;
 
 
 	right.frames.push_back({ 595,385,85,77 });
@@ -79,7 +65,7 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	right.speed = 0.15f;
 
 	// move right TODO
-	down.frames.push_back({ 927,537,103,75 });
+	/*down.frames.push_back({ 927,537,103,75 });
 	down.frames.push_back({ 0,636,103,75 });
 	down.frames.push_back({ 103,636,103,75 });
 	down.frames.push_back({ 206,636,103,75 });
@@ -88,7 +74,7 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	down.frames.push_back({ 515,636,103,75 });
 	down.frames.push_back({ 618,636,103,75 });
 	down.loop = true;
-	down.speed = 0.15f;
+	down.speed = 0.15f;*/
 
 	kick.frames.push_back({ 255,0,85,77 });
 	kick.frames.push_back({ 340,0,85,77 });
@@ -137,6 +123,114 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	attack4.frames.push_back({ 170,231,85,77 });
 	attack4.loop = true;
 	attack4.speed = 0.15f;
+
+	// move upwards
+	jump.frames.push_back({ 255, 231, 85, 77 });
+	jump.frames.push_back({ 340, 231, 85, 77 });
+	jump.frames.push_back({ 425, 231, 85, 75 });
+	jump.frames.push_back({ 510, 231, 85, 77 });
+	jump.frames.push_back({ 595, 231, 85, 77 });
+	jump.frames.push_back({ 680, 231, 85, 77 });
+	jump.frames.push_back({ 765, 231, 85, 77 });
+	jump.frames.push_back({ 850, 231, 85, 77 });
+	jump.frames.push_back({ 0, 308, 85, 77 });
+	jump.frames.push_back({ 85, 308, 85, 77 });
+	jump.frames.push_back({ 170, 308, 85, 77 });
+	jump.frames.push_back({ 255, 308, 85, 77 });
+	jump.loop = true;
+	jump.speed = 0.25f;
+
+
+	jumpAttack1.frames.push_back({ 340,308,85,77 });
+	jumpAttack1.frames.push_back({ 425,308,85,77 });
+	jumpAttack1.frames.push_back({ 510,308,85,77 });
+	jumpAttack1.loop = true;
+	jumpAttack1.speed = 0.15f;
+
+
+	jumpAttack2.frames.push_back({ 595,308,85,77 });
+	jumpAttack2.frames.push_back({ 680,308,85,77 });
+	jumpAttack2.frames.push_back({ 765,308,85,77 });
+	jumpAttack2.loop = true;
+	jumpAttack2.speed = 0.15f;
+
+	jumpAttack3.frames.push_back({ 0,385,85,77 });
+	jumpAttack3.frames.push_back({ 85,385,85,77 });
+	jumpAttack3.frames.push_back({ 170,385,85,77 });
+	jumpAttack3.frames.push_back({ 255,385,85,77 });
+	jumpAttack3.frames.push_back({ 340,385,85,77 });
+	jumpAttack3.frames.push_back({ 425,385,85,77 });
+	jumpAttack3.frames.push_back({ 510,385,85,77 });
+	jumpAttack3.loop = true;
+	jumpAttack3.speed = 0.15f;
+
+	hit1.frames.push_back({ 255,539,85,77 });
+	hit1.frames.push_back({ 340,539,85,77 });
+	hit1.frames.push_back({ 425,539,85,77 });
+	hit1.frames.push_back({ 510,539,85,77 });
+	hit1.frames.push_back({ 595,539,85,77 });
+	hit1.frames.push_back({ 680,539,85,77 });
+	hit1.loop = true;
+	hit1.speed = 0.15f;
+
+	hit2.frames.push_back({ 765,616,85,77 });
+	hit2.frames.push_back({ 0,616,85,77 });
+	hit2.frames.push_back({ 85,616,85,77 });
+	hit2.frames.push_back({ 170,616,85,77 });
+	hit2.loop = true;
+	hit2.speed = 0.15f;
+
+	hit3.frames.push_back({ 255,616,85,77 });
+	hit3.frames.push_back({ 340,616,85,77 });
+	hit3.frames.push_back({ 425,616,85,77 });
+	hit3.frames.push_back({ 510,616,85,77 });
+	hit3.frames.push_back({ 595,616,85,77 });
+	hit3.frames.push_back({ 680,616,85,77 });
+	hit3.frames.push_back({ 765,616,85,77 });
+	hit3.frames.push_back({ 0,693,85,77 });
+	hit3.frames.push_back({ 85,693,85,77 });
+	hit3.frames.push_back({ 170,693,85,77 });
+	hit3.loop = true;
+	hit3.speed = 0.15f;
+
+	hitBehind1.frames.push_back({ 255,693,85,77 });
+	hitBehind1.frames.push_back({ 340,693,85,77 });
+	hitBehind1.frames.push_back({ 425,693,85,77 });
+	hitBehind1.loop = true;
+	hitBehind1.speed = 0.15f;
+
+	hitBehind2.frames.push_back({ 510,693,85,77 });
+	hitBehind2.frames.push_back({ 595,693,85,77 });
+	hitBehind2.frames.push_back({ 680,693,85,77 });
+	hitBehind2.frames.push_back({ 765,693,85,77 });
+	hitBehind2.frames.push_back({ 0,770,85,77 });
+	hitBehind2.frames.push_back({ 85,770,85,77 });
+	hitBehind2.frames.push_back({ 170,770,85,77 });
+	hitBehind2.frames.push_back({ 255,770,85,77 });
+	hitBehind2.frames.push_back({ 340,770,85,77 });
+	hitBehind2.frames.push_back({ 425,770,85,77 });
+	hitBehind2.frames.push_back({ 510,770,85,77 });
+	hitBehind2.frames.push_back({ 595,770,85,77 });
+	hitBehind2.frames.push_back({ 680,770,85,77 });
+	hitBehind2.frames.push_back({ 765,770,85,77 });
+	hitBehind2.loop = true;
+	hitBehind2.speed = 0.15f;
+
+	hitBehind3.frames.push_back({ 0,847,85,77 });
+	hitBehind3.frames.push_back({ 85,847,85,77 });
+	hitBehind3.frames.push_back({ 170,847,85,77 });
+	hitBehind3.frames.push_back({ 255,847,85,77 });
+	hitBehind3.frames.push_back({ 340,847,85,77 });
+	hitBehind3.frames.push_back({ 425,847,85,77 });
+	hitBehind3.frames.push_back({ 510,847,85,77 });
+	hitBehind3.frames.push_back({ 595,847,85,77 });
+	hitBehind3.frames.push_back({ 680,847,85,77 });
+	hitBehind3.frames.push_back({ 765,847,85,77 });
+	hitBehind3.loop = true;
+	hitBehind3.speed = 0.15f;
+
+
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -153,7 +247,9 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 120;
 
-	collider = App->collision->AddCollider({ position.x, position.y,32,14 }, COLLIDER_PLAYER, this);
+	collider = App->collision->AddCollider({ position.x, position.y,60,50 }, COLLIDER_PLAYER, this);
+	stateMachine = IDLE;
+	//feetCollider = App->collision->AddCollider({ position.x, position.y + 10, 32, 45 }, COLLIDER_PLAYER_FEET, this);
 
 	return true;
 }
@@ -182,81 +278,93 @@ update_status ModulePlayer::Update()
 	//stateMachine.GetStateMap();
 
 
-	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
-	{
-		position.x -= speed;
-		if (current_animation != &right)
-		{
-			upright.Reset();
-			current_animation = &right;
-		}
-		
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
-	{
-		position.x += speed;
-		if (current_animation != &right)
-		{
-			right.Reset();
-			current_animation = &right;
-		}
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
-	{
-		position.y += speed;
-		if(current_animation != &upright)
-		{
-			upright.Reset();
-			current_animation = &upright;
-		}
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
-	{
-		position.y -= speed;
-		if(current_animation != &upright)
-		{
-			upright.Reset();
-			current_animation = &upright;
-		}
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
-	{
-		position.y -= speed;
-		if (current_animation != &attack2)
-		{
-			attack2.Reset();
-			current_animation = &attack2;
-		}
-	}
-
-
-	if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
+	switch (stateMachine)
 	{
 
-		position.y -= speed;
-		if (current_animation != &attack3)
+	case IDLE:
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 		{
-			attack3.Reset();
-			current_animation = &attack3;
+			facing = LEFT;
+
+
+			if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+			{
+				setCurrentAnimation(&up);
+			}
+			else
+			{
+				setCurrentAnimation(&right);
+
+			}
+
+
+
+			position.x -= speed;
+
 		}
+
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+		{
+			facing = RIGHT;
+
+			if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+			{
+				setCurrentAnimation(&up);
+			}
+			else
+			{
+				setCurrentAnimation(&right);
+			}
+
+			position.x += speed;
+
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+		{
+			position.y += speed;
+			setCurrentAnimation(&up);
+
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+		{
+			position.y -= speed;
+			setCurrentAnimation(&up);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+		{
+			//position.y -= speed;
+			stateMachine = 
+			setCurrentAnimation(&attack2);
+		}
+
+
+		if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
+		{
+
+			//position.y -= speed;
+			setCurrentAnimation(&attack3);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			/*// TODO 6: Shoot a laser using the particle system
+			App->particles->AddParticle(App->particles->laser, position.x+28, position.y, 0,COLLIDER_PLAYER_SHOT);	*/
+			if (facing == RIGHT)
+				position.x += speed * 3;
+			else
+				position.x -= speed * 3;
+			setCurrentAnimation(&attack4);
+		}
+		break;
+	default:
+		break;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-	{
-		/*// TODO 6: Shoot a laser using the particle system
-		App->particles->AddParticle(App->particles->laser, position.x+28, position.y, 0,COLLIDER_PLAYER_SHOT);	*/
 
-		position.y -= speed;
-		if (current_animation != &up)
-		{
-			up.Reset();
-			current_animation = &up;
-		}
-	}
+
 
 	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE
 	   && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE
@@ -268,11 +376,34 @@ update_status ModulePlayer::Update()
 		&&App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
 		current_animation = &idle;
 
-	collider->SetPos(position.x, position.y);
+
+
+	
 
 	// Draw everything --------------------------------------
-	if(destroyed == false)
-		App->renderer->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+
+
+
+	if (destroyed == false)
+	{
+		if (facing == LEFT) 
+		{
+			collider->SetPos(position.x+5, position.y + 20);
+			App->renderer->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()), 1.0f, true);
+
+		}
+		else
+		{
+			collider->SetPos(position.x + 20, position.y + 20);
+			App->renderer->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		}
+			
+
+
+	}
+		
+	
+		
 
 	return UPDATE_CONTINUE;
 }
@@ -292,4 +423,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
 	}
 
+}
+
+void ModulePlayer::setCurrentAnimation(Animation* anim) {
+	if (current_animation != anim)
+	{
+		anim->Reset();
+		current_animation = anim;
+	}
 }
