@@ -40,6 +40,11 @@ public:
 		DEAD,
 		UNKNOWN
 	};
+	enum Direction
+	{
+		LEFT,
+		RIGHT
+	};
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Collider* collider = nullptr;
@@ -72,9 +77,16 @@ public:
 	Animation hitBehind2;
 	Animation hitBehind3;
 
+public:
 
 	iPoint position;
+	bool jumped = false;
 	bool destroyed = false;
+	bool sameDirection = false;
+	int hits = 0;
+	Direction facing = RIGHT;
+	
+
 	void OnCollision(Collider* c1, Collider* c2);
 };
 

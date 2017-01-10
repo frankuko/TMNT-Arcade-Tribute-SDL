@@ -177,7 +177,7 @@ update_status ModulePlayer::Update()
 	int speed = 1;
 
 
-	stateMachine.Update();
+//	stateMachine.Update();
 	
 	//stateMachine.GetStateMap();
 
@@ -236,7 +236,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 	{
-		stateMachine.Attack();
+
 		position.y -= speed;
 		if (current_animation != &attack3)
 		{
@@ -289,7 +289,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_space,0.5f);
 		destroyed = true;
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
+		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
 	}
 
 }

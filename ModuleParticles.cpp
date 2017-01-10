@@ -125,7 +125,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 		if (p->particle_collider == c1)
 		{
-			App->particles->AddParticle(App->particles->explosion, p->position.x, p->position.y, 0);
+			//App->particles->AddParticle(App->particles->explosion, p->position.x, p->position.y, 0);
 
 			delete p;
 			active.erase(it);

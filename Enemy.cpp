@@ -10,6 +10,13 @@ Enemy::Enemy(EntityType entityType)
 {
 }
 
+Enemy::Enemy()
+	:Entity()
+{
+}
+
+
+
 Enemy::~Enemy()
 {}
 
@@ -91,7 +98,7 @@ bool Enemy::Update2()
 			{
 				facing = LEFT;
 				//SI EL JUGADOR ESTA EN EL SUELO
-				if (App->player->stateMachine == TAKEDDOWN && abs(App->player->position.x - position.x) <= 150)
+				if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 				{
 					facing = RIGHT;
 					setCurrentAnimation(&walkingRight);
@@ -110,14 +117,14 @@ bool Enemy::Update2()
 					break;
 				}
 				velocity.x = -1;
-				setCurrentAnimation(&walkingLeft)
+				setCurrentAnimation(&walkingLeft);
 			}
 			else
 			{
 				if ((App->player->position.x - position.x) > 0)
 				{
 					facing = RIGHT;
-					if (App->player->currentState == TAKEDDOWN && abs(App->player->position.x - position.x) <= 150)
+					if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 					{
 						facing = LEFT;
 						velocity.x = -1; //OJO CUIDAO
@@ -147,30 +154,29 @@ bool Enemy::Update2()
 		break;
 
 	case ATTACKING:
-		if (App->player->currentState == BEINGATTACKED)
+		if (App->player->stateMachine == BEING_HIT)
 		{
 			if (attackCollider != nullptr && attacking)
 			{
-				if (App->player->faceRight && faceRight)
+
+				if (App->player->facing == facing)
 					App->player->sameDirection = true;
 				else
-					if (!App->player->faceRight && !faceRight)
-						App->player->sameDirection = true;
-					else
-						App->player->sameDirection = false;
-				attackCollider = App->collision->DeleteCollider(attackCollider);
+					App->player->sameDirection = false;
+					
+				attackCollider = App->collision->RemoveCollider(attackCollider);
 				App->player->hits += 1;
 
 			}
 
 			break;
 		}
-		if (App->player->currentState == TAKEDDOWN)
+		if (App->player->stateMachine == KNOCKED)
 		{
 			if (attackCollider != nullptr)
 			{
 				status = IDLE;
-				attackCollider = App->collision->DeleteCollider(attackCollider);
+				attackCollider = App->collision->RemoveCollider(attackCollider);
 			}
 		}
 		if ((abs(App->player->position.x - position.x) <= 150) && abs(App->player->position.y - position.y) == 0 && current_animation != &attack2 && current_animation != &attack2Left)
@@ -317,13 +323,11 @@ bool Enemy::Update2()
 			if (attackCollider != nullptr)
 				attackCollider = App->collision->RemoveCollider(attackCollider);
 		}
-		if (App->player->faceRight && faceRight)
+
+		if (App->player->facing == facing)
 			App->player->sameDirection = true;
 		else
-			if (!App->player->faceRight && !faceRight)
-				App->player->sameDirection = true;
-			else
-				App->player->sameDirection = false;
+			App->player->sameDirection = false;
 
 		if (consecutiveHits >= 2)
 		{
@@ -384,6 +388,10 @@ bool Enemy::Update2()
 			dead = true;
 		}
 		break;
+
+	case UNKNOWN:
+		spawn();
+		break;
 	}
 
 	position += velocity;
@@ -392,26 +400,26 @@ bool Enemy::Update2()
 
 update_status Enemy::Update()
 {
-	handleState();
+//	handleState();
 
-	if (status != UNKNOWN) {
-		updatePosition();
-		paint();
+	if (status != IDLE) {
+		//updatePosition();
+		spawn();
 	}
 
 	return UPDATE_CONTINUE;
 }
-/*
+
 // Respawn player
 void Enemy::spawn()
 {
 	LOG("Spawning Enemy");
-	position = initPos;
-	height = 0;
-	setCurrentAnimation(&idle);
+	//position = initPos;
+	//height = 0;
+	setCurrentAnimation(&walkingLeft);
 	status = IDLE;
-	EnemyTimer.reset();
-}*/
+	
+}
 /*
 void Enemy::hit(Entity* c2) {
 
@@ -474,7 +482,7 @@ void Enemy::setCurrentAnimation(Animation* anim) {
 		current_animation = anim;
 	}
 }
-/**/
+/*
 void Enemy::handleState()
 {
 	switch (status) {

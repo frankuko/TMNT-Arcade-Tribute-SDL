@@ -42,18 +42,19 @@ public:
 	};
 
 	Enemy(EntityType entityType);
+	Enemy();
 	virtual ~Enemy();
 	virtual bool Start();
 	virtual update_status Update();
 	virtual bool Update2();
-	virtual void updatePosition();
+	//virtual void updatePosition();
 	void setCurrentAnimation(Animation* anim);
-	void handleState();
+	//void handleState();
 	bool isAttacking() const;
 	bool canBeAttacked() const;
-	virtual void paint();
+	//virtual void paint();
 	virtual void spawn();
-	void hit(Entity* c2);
+	//void hit(Entity* c2);
 public:
 	Animation* current_animation = nullptr;
 	Animation idle;
@@ -79,19 +80,21 @@ public:
 	Animation beingHit6;
 	Animation gettingUp;
 	Animation knockedOut;
-	iPoint velocity = { 0.0, 0.0 };
-	iPoint prevVelocity = { 0.0, 0.0 };
+	iPoint velocity = { 0, 0 };
+	iPoint prevVelocity = { 0, 0};
 	short int height = 0;
 	unsigned short int consecutiveHits = 0;
 	float verticalForce = 0.0f;
 	float horizontalForce = 0.0f;
 	bool attacking = false;
+	bool jumped = false;
 	bool dead = false;
 	EnemyType enemyType = PURPLE;
 	State status = UNKNOWN;
 	SimpleTimer EnemyTimer, refreshTimer, movementTimer, jumpTimer;
 	SimpleTimer hitTimer, attackTimer, beingHitTimer;
 	Collider* attackCollider = nullptr;
+	Collider* feetCollider = nullptr;
 	Direction facing = LEFT;
 
 };

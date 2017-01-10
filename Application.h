@@ -19,6 +19,7 @@ class ModulePlayer;
 class ModuleSceneIntro;
 class ModuleSceneSpace;
 class ModuleSceneLevel;
+class ModuleEnemy;
 
 class Application
 {
@@ -46,6 +47,7 @@ public:
 	ModuleSceneIntro* scene_intro;
 	ModuleSceneSpace* scene_space;
 	ModuleSceneLevel* scene_level;
+	ModuleEnemy* enemy;
 
 private:
 

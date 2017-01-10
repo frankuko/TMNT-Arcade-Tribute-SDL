@@ -8,6 +8,11 @@ Entity::Entity(EntityType entityType)
 {
 }
 
+Entity::Entity()
+	:entityType(UNKNOWN)
+{
+}
+
 Entity::~Entity()
 {}
 

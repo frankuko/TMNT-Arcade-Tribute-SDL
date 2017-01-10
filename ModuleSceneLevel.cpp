@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleSceneLevel.h"
+#include "ModuleEnemy.h"
 
 
 ModuleSceneLevel::ModuleSceneLevel(bool active) : Module(active)
@@ -23,10 +24,19 @@ bool ModuleSceneLevel::Start()
 	background = App->textures->Load("TMNT/stage.png");
 
 	App->player->Enable();
+	App->enemy->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
 
+
 	App->audio->PlayMusic("TMNT/stage1.ogg", 1.0f);
+
+/*
+	iPoint posEnemy;
+	posEnemy.x = 60;
+	posEnemy.y = 100;
+	App->enemy->AddEnemy(App->enemy->enemy1, posEnemy, Enemy::PURPLE);*/
+
 
 
 	return true;
@@ -39,6 +49,7 @@ bool ModuleSceneLevel::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
+	App->enemy->Enable();
 	App->collision->Disable();
 	App->particles->Disable();
 

@@ -16,6 +16,7 @@ public:
 		ENEMY,
 		UNKNOWN
 	};
+	Entity();
 	Entity(EntityType entityType);
 	virtual ~Entity();
 	virtual bool Start();
