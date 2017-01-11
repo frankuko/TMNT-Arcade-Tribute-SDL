@@ -21,7 +21,7 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("TMNT/stage_animation.png");
 
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/stagepart.png");
+	//graphics = App->textures->Load("rtype/stagepart.png");
 
 	//fire1 
 	fire1.particle_anim.frames.push_back({ 17, 430, 304, 65 });

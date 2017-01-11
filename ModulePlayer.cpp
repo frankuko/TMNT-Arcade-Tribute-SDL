@@ -247,9 +247,9 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 120;
 
-	collider = App->collision->AddCollider({ position.x, position.y,60,50 }, COLLIDER_PLAYER, this);
+	collider = App->collision->AddCollider({ position.x, position.y,40,50 }, COLLIDER_PLAYER, this);
 	stateMachine = IDLE;
-	//feetCollider = App->collision->AddCollider({ position.x, position.y + 10, 32, 45 }, COLLIDER_PLAYER_FEET, this);
+	feetCollider = App->collision->AddCollider({ position.x+25, position.y + 70, 30, 5 }, COLLIDER_PLAYER_FEET, this);
 
 	return true;
 }
@@ -336,28 +336,124 @@ update_status ModulePlayer::Update()
 		if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 		{
 			//position.y -= speed;
-			stateMachine = 
-			setCurrentAnimation(&attack2);
+			stateMachine = ATTACKING;
+			setCurrentAnimation(&attack1);
 		}
 
 
 		if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 		{
 
-			//position.y -= speed;
+			stateMachine = ATTACKING_2;
+			setCurrentAnimation(&attack2);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+		{
+
+			stateMachine = ATTACKING_3;
+			if (facing == RIGHT)
+				position.x += speed * 3;
+			else
+				position.x -= speed * 3;
 			setCurrentAnimation(&attack3);
 		}
+
+		if (App->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN)
+		{
+
+			stateMachine = ATTACKING_4;
+			setCurrentAnimation(&attack4);
+		}
+
+
 
 		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			/*// TODO 6: Shoot a laser using the particle system
 			App->particles->AddParticle(App->particles->laser, position.x+28, position.y, 0,COLLIDER_PLAYER_SHOT);	*/
-			if (facing == RIGHT)
-				position.x += speed * 3;
-			else
-				position.x -= speed * 3;
-			setCurrentAnimation(&attack4);
+			stateMachine = JUMP_INI;
+			setCurrentAnimation(&jump);
 		}
+
+		break;
+
+	case JUMP_INI:
+		setCurrentAnimation(&jump);
+		initPosition = position;
+		destinyPosition.y = position.y - 40;
+		destinyPosition.x = position.x;
+		stateMachine = JUMPING;
+		feetCollider = App->collision->RemoveCollider(feetCollider);
+		
+		break;
+
+	case JUMPING:
+
+		setCurrentAnimation(&jump);
+		if (position.y <= destinyPosition.y)
+		{
+			stateMachine = JUMP_END;
+		}
+
+		else
+		{
+			//seguimos subiendo
+			position.y -= 3;
+		}
+
+		break;
+
+	case JUMP_END:
+		setCurrentAnimation(&jump);
+		if (position.y >= initPosition.y)
+		{
+			feetCollider = App->collision->AddCollider({ position.x + 25, position.y + 70, 30, 5 }, COLLIDER_PLAYER_FEET, this);
+			stateMachine = IDLE;
+		}
+
+		else
+		{
+			position.y += 3;
+		}
+
+		break;
+
+	case ATTACKING:
+		if (current_animation->Finished()) 
+		{
+			
+			stateMachine = IDLE;
+			break;
+		}
+
+		break;
+	case ATTACKING_2:
+		if (current_animation->Finished())
+		{
+
+			stateMachine = IDLE;
+			break;
+		}
+
+		break;
+	case ATTACKING_3:
+		if (current_animation->Finished())
+		{
+
+			stateMachine = IDLE;
+			break;
+		}
+
+		break;
+	case ATTACKING_4:
+		if (current_animation->Finished())
+		{
+
+			stateMachine = IDLE;
+			break;
+		}
+
 		break;
 	default:
 		break;
@@ -370,15 +466,9 @@ update_status ModulePlayer::Update()
 	   && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE
 		&& App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE
 		&&App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE
-		&&App->input->GetKey(SDL_SCANCODE_Q) == KEY_IDLE
-		&&App->input->GetKey(SDL_SCANCODE_N) == KEY_IDLE
-		&&App->input->GetKey(SDL_SCANCODE_M) == KEY_IDLE
-		&&App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
+		&& stateMachine == IDLE)
 		current_animation = &idle;
 
-
-
-	
 
 	// Draw everything --------------------------------------
 
@@ -388,13 +478,17 @@ update_status ModulePlayer::Update()
 	{
 		if (facing == LEFT) 
 		{
-			collider->SetPos(position.x+5, position.y + 20);
+			collider->SetPos(position.x+20, position.y + 20);
+			if(feetCollider != nullptr)
+				feetCollider->SetPos(position.x + 25, position.y + 70);
 			App->renderer->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()), 1.0f, true);
 
 		}
 		else
 		{
 			collider->SetPos(position.x + 20, position.y + 20);
+			if (feetCollider != nullptr)
+				feetCollider->SetPos(position.x + 25, position.y + 70);
 			App->renderer->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 		}
 			
@@ -408,19 +502,44 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
-// TODO 13: Make so is the laser collides, it is removed and create an explosion particle at its position
 
-// TODO 14: Make so if the player collides, it is removed and create few explosions at its positions
-// then fade away back to the first screen (use the "destroyed" bool already created 
-// You will need to create, update and destroy the collider with the player
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (destroyed == false)
+	/*if (destroyed == false)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_space,0.5f);
 		destroyed = true;
 		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
+	}*/
+
+	//left
+	if ((c1->rect.x < c2->rect.x + c2->rect.w) && ((c2->rect.x + c2->rect.w) - c1->rect.x) < c1->rect.w && ((c2->rect.y + c2->rect.h) - c1->rect.y) >4 && (c2->rect.y - (c1->rect.h + c1->rect.y)) <-4 && (c2->type == COLLIDER_WALL) && (c1->type == COLLIDER_PLAYER_FEET))
+	{
+		position.x += ((c2->rect.x + c2->rect.w) - c1->rect.x);
+	}
+	else
+	{
+		//right
+		if (c1->rect.x + c1->rect.w > c2->rect.x && ((c2->rect.y + c2->rect.h) - c1->rect.y) >4 && (c2->rect.y - (c1->rect.h + c1->rect.y)) <-4 && (c2->type == COLLIDER_WALL) && (c1->type == COLLIDER_PLAYER_FEET))
+		{
+			position.x += (c2->rect.x - (c1->rect.x + c1->rect.w));
+		}
+		else
+			//down
+			if ((c1->rect.y < c2->rect.y + c2->rect.h) && ((c1->rect.h + c1->rect.y) - c2->rect.y) > c1->rect.h && (c2->type == COLLIDER_WALL) && (c1->type == COLLIDER_PLAYER_FEET))
+			{
+				position.y += ((c2->rect.y + c2->rect.h) - c1->rect.y);
+			}
+			else
+			
+				//up
+				if (c1->rect.h + c1->rect.y > c2->rect.y && (c2->type == COLLIDER_WALL ) && (c1->type == COLLIDER_PLAYER_FEET))
+				{
+					position.y += (c2->rect.y - (c1->rect.h + c1->rect.y));
+				}
+			
+		
 	}
 
 }

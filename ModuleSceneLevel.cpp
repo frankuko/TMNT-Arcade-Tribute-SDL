@@ -37,6 +37,25 @@ bool ModuleSceneLevel::Start()
 	posEnemy.y = 100;
 	App->enemy->AddEnemy(App->enemy->enemy1, posEnemy, Enemy::PURPLE);*/
 
+	App->collision->AddCollider({ 0,0,1350, 130 }, COLLIDER_WALL, this);
+
+	App->collision->AddCollider({ 0,SCREEN_HEIGHT,1350, 2 }, COLLIDER_WALL, this);
+
+
+	App->particles->AddParticle(App->particles->fire1, 0, 157, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 0, 168, 0,  COLLIDER_NONE);
+
+	App->particles->AddParticle(App->particles->fire1, 301, 157, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 301, 168, 0,  COLLIDER_NONE);
+
+	App->particles->AddParticle(App->particles->fire1, 602, 157, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 602, 168, 0,  COLLIDER_NONE);
+
+	App->particles->AddParticle(App->particles->fire1, 903, 157, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 903, 168, 0,  COLLIDER_NONE);
+
+	App->particles->AddParticle(App->particles->fire1, 1204, 157, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 1204, 168, 0, COLLIDER_NONE);
 
 
 	return true;

@@ -81,6 +81,8 @@ public:
 public:
 
 	iPoint position;
+
+	iPoint initPosition, destinyPosition;
 	bool jumped = false;
 	bool destroyed = false;
 	bool sameDirection = false;
