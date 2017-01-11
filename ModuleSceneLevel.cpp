@@ -34,7 +34,7 @@ bool ModuleSceneLevel::Start()
 
 	iPoint posEnemy;
 	posEnemy.x = 150;
-	posEnemy.y = 100;
+	posEnemy.y = 160;
 	App->enemy->AddEnemy(App->enemy->enemy1, posEnemy, Enemy::PURPLE);
 
 	App->collision->AddCollider({ 0,0,1350, 130 }, COLLIDER_WALL, this);

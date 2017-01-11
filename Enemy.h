@@ -82,7 +82,7 @@ public:
 	Animation knockedOut;
 	iPoint velocity = { 0, 0 };
 	iPoint prevVelocity = { 0, 0};
-	short int height = 0;
+	 int cont = 0;
 	unsigned short int consecutiveHits = 0;
 	float verticalForce = 0.0f;
 	float horizontalForce = 0.0f;
@@ -96,6 +96,8 @@ public:
 	Collider* attackCollider = nullptr;
 	Collider* feetCollider = nullptr;
 	Direction facing = LEFT;
+
+
 
 };
 

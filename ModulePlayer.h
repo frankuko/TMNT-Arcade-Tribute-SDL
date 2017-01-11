@@ -49,6 +49,7 @@ public:
 	Animation* current_animation = nullptr;
 	Collider* collider = nullptr;
 	Collider* feetCollider = nullptr;
+	Collider* weaponCollider = nullptr;
 	Animation idle;
 	Animation up;
 	Animation down;

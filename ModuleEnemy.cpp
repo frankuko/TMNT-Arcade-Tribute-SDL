@@ -194,163 +194,6 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	enemy1.beingHit6.loop = false;
 	enemy1.beingHit6.speed = 0.2f;
 
-
-	//ENEMY 2
-
-	//going left
-	enemy2.walkingLeft.frames.push_back({ 172, 80, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 96, 80, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 19, 80, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 337, 0, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 253, 0, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 176, 0, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 98, 0, 52, 64 });
-	enemy2.walkingLeft.frames.push_back({ 17, 0, 52, 64 });
-	enemy2.walkingLeft.pivotY = -5;
-	enemy2.walkingLeft.loop = true;
-	enemy2.walkingLeft.speed = 0.2f;
-
-	//going right
-	/*enemy2.walkingRight.frames.push_back({ 589, 80, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 671, 80, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 757, 80, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 433, 0, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 508, 0, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 593, 0, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 674, 0, 52, 64 });
-	enemy2.walkingRight.frames.push_back({ 751, 0, 52, 64 });
-	enemy2.walkingRight.pivotY = -5;
-	enemy2.walkingRight.loop = true;
-	enemy2.walkingRight.speed = 0.2f;*/
-
-	//going upLeft
-	enemy2.upLeft.frames.push_back({ 14, 240, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 333, 160, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 252, 160, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 176, 160, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 96, 160, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 17, 160, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 336, 81, 52, 64 });
-	enemy2.upLeft.frames.push_back({ 256, 81, 52, 64 });
-	enemy2.upLeft.pivotY = -5;
-	enemy2.upLeft.loop = true;
-	enemy2.upLeft.speed = 0.2f;
-
-	//going up
-	enemy2.up.frames.push_back({ 749, 240, 52, 64 });
-	enemy2.up.frames.push_back({ 431, 160, 52, 64 });
-	enemy2.up.frames.push_back({ 509, 160, 52, 64 });
-	enemy2.up.frames.push_back({ 595, 160, 52, 64 });
-	enemy2.up.frames.push_back({ 671, 160, 52, 64 });
-	enemy2.up.frames.push_back({ 753, 160, 52, 64 });
-	enemy2.up.frames.push_back({ 433, 81, 52, 64 });
-	enemy2.up.frames.push_back({ 512, 81, 52, 64 });
-	enemy2.up.pivotY = -5;
-	enemy2.up.loop = true;
-	enemy2.up.speed = 0.2f;
-
-	//attack1
-	enemy2.attack1.frames.push_back({ 577, 643, 60, 64 });
-	enemy2.attack1.frames.push_back({ 668, 643, 60, 64 });
-	enemy2.attack1.frames.push_back({ 753, 643, 60, 64 });
-	enemy2.attack1.pivotY = -10;
-	enemy2.attack1.loop = false;
-	enemy2.attack1.speed = 0.07f;
-
-	//attack1Left
-	enemy2.attack1Left.frames.push_back({ 161, 643, 60, 64 });
-	enemy2.attack1Left.frames.push_back({ 91, 643, 60, 64 });
-	enemy2.attack1Left.frames.push_back({ 16, 643, 60, 64 });
-	enemy2.attack1Left.pivotY = -10;
-	enemy2.attack1Left.loop = false;
-	enemy2.attack1Left.speed = 0.07f;
-
-	//attack2Left
-	enemy2.attack2Left.frames.push_back({ 251, 1749, 60, 64 });
-	enemy2.attack2Left.frames.push_back({ 166, 1749, 60, 64 });
-	enemy2.attack2Left.frames.push_back({ 16, 643, 60, 64 });
-	enemy2.attack2Left.frames.push_back({ 16, 643, 60, 64 });
-	enemy2.attack2Left.frames.push_back({ 16, 643, 60, 64 });
-	enemy2.attack2Left.frames.push_back({ 16, 643, 60, 64 });
-	enemy2.attack2Left.pivotY = -10;
-	enemy2.attack2Left.loop = false;
-	enemy2.attack2Left.speed = 0.1f;
-
-	//attack2
-	enemy2.attack2.frames.push_back({ 317, 1749, 60, 64 });
-	enemy2.attack2.frames.push_back({ 397, 1749, 60, 64 });
-	enemy2.attack2.frames.push_back({ 753, 643, 60, 64 });
-	enemy2.attack2.frames.push_back({ 753, 643, 60, 64 });
-	enemy2.attack2.frames.push_back({ 753, 643, 60, 64 });
-	enemy2.attack2.frames.push_back({ 753, 643, 60, 64 });
-	enemy2.attack2.pivotY = -10;
-	enemy2.attack2.loop = false;
-	enemy2.attack2.speed = 0.1f;
-
-	//beingHit
-	enemy2.beingHit.frames.push_back({ 250, 800, 60, 64 });
-	enemy2.beingHit.frames.push_back({ 167, 800, 60, 64 });
-	enemy2.beingHit.frames.push_back({ 81, 800, 60, 64 });
-	enemy2.beingHit.frames.push_back({ 9, 800, 60, 64 });
-	enemy2.beingHit.pivotY = -10;
-	enemy2.beingHit.loop = false;
-	enemy2.beingHit.speed = 0.2f;
-
-	//beingHit2
-	enemy2.beingHit2.frames.push_back({ 508, 800, 60, 64 });
-	enemy2.beingHit2.frames.push_back({ 584, 800, 60, 64 });
-	enemy2.beingHit2.frames.push_back({ 658, 800, 60, 64 });
-	enemy2.beingHit2.frames.push_back({ 746, 800, 60, 64 });
-	enemy2.beingHit2.pivotY = -10;
-	enemy2.beingHit2.loop = false;
-	enemy2.beingHit2.speed = 0.2f;
-
-	//beingHit3
-	enemy2.beingHit3.frames.push_back({ 16, 1940, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 99, 1940, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 99, 1940, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 99, 1940, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 99, 1940, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 253, 1855, 60, 64 });
-	enemy2.beingHit3.frames.push_back({ 329, 1855, 60, 64 });
-	enemy2.beingHit3.pivotY = -20;
-	enemy2.beingHit3.loop = false;
-	enemy2.beingHit3.speed = 0.2f;
-
-	//beingHit4
-	enemy2.beingHit4.frames.push_back({ 738, 1940, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 663, 1940, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 663, 1940, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 663, 1940, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 663, 1940, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 498, 1855, 60, 64 });
-	enemy2.beingHit4.frames.push_back({ 414, 1855, 60, 64 });
-	enemy2.beingHit4.pivotY = -20;
-	enemy2.beingHit4.loop = false;
-	enemy2.beingHit4.speed = 0.2f;
-
-	//beingHit5
-	enemy2.beingHit5.frames.push_back({ 332, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 251, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 171, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 17, 2016, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 91, 2016, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 159, 1998, 60, 64 });
-	enemy2.beingHit5.pivotY = -20;
-	enemy2.beingHit5.loop = false;
-	enemy2.beingHit5.speed = 0.2f;
-
-	//reciveDamage3Left
-	enemy2.beingHit5.frames.push_back({ 418, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 498, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 576, 1940, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 565, 2016, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 657, 2016, 60, 64 });
-	enemy2.beingHit5.frames.push_back({ 740, 1998, 60, 64 });
-	enemy2.beingHit5.pivotY = -20;
-	enemy2.beingHit5.loop = false;
-	enemy2.beingHit5.speed = 0.2f;
-
 }
 
 ModuleEnemy::~ModuleEnemy()
@@ -413,8 +256,8 @@ update_status ModuleEnemy::Update()
 bool ModuleEnemy::CleanUp()
 {
 	LOG("Unloading enemies");
-	/*if (enemy1.graphics != NULL)
-		App->textures->Unload(enemy1.graphics);*/
+	if (enemy1.graphics != NULL)
+		App->textures->Unload(enemy1.graphics);
 
 	for (list<Enemy*>::iterator it = active.begin(); it != active.end(); ++it)
 		RELEASE(*it);
@@ -444,8 +287,8 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 		Enemy* aux = *it;
 
 
-		/*
-		if (App->player->jumped)
+		
+		/*if (App->player->jumped)
 		{
 			if (c2->type == COLLIDER_PLAYER_WEAPON && c1 == aux->baseCollider && aux->status != Enemy::KNOCKED)
 			{

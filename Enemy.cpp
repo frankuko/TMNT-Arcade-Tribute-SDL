@@ -98,14 +98,14 @@ bool Enemy::Update2()
 			if ((App->player->position.x - position.x) < 0)
 			{
 				facing = LEFT;
-				/*if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
+				if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 				{
 					facing = RIGHT;
 					setCurrentAnimation(&walkingLeft);
 					velocity.x = 1;
 					break;
 				}
-				else*/
+				else
 				if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
 				{
 					status = ATTACKING;
@@ -124,14 +124,14 @@ bool Enemy::Update2()
 				if ((App->player->position.x - position.x) > 0)
 				{
 					facing = RIGHT;
-					/*if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
+					if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 					{
 						facing = LEFT;
 						velocity.x = -1; //OJO CUIDAO
 						setCurrentAnimation(&walkingLeft);
 						break;
 					}
-					else*/ 
+					else 
 					if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
 					{
 						status = ATTACKING;
@@ -186,12 +186,12 @@ bool Enemy::Update2()
 			{
 				if (facing == RIGHT)
 				{
-					if (current_animation != &attack1)
+					if (current_animation != &attack1Left)
 					{
 						attacking = true;
 						attackCollider = App->collision->AddCollider({ position.x + 30, position.y + 10, 45, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
-						attack1.Reset();
-						current_animation = &attack1;
+						attack1Left.Reset();
+						current_animation = &attack1Left;
 						App->player->stateMachine = ModulePlayer::KNOCKED;
 					}
 				}
@@ -216,13 +216,13 @@ bool Enemy::Update2()
 					{
 						if (facing  == RIGHT)
 						{
-							if (current_animation != &attack2)
+							if (current_animation != &attack2Left)
 							{
 								attacking = true;
 								jumped = true;
 								attackCollider = App->collision->AddCollider({ position.x + 30, position.y + 20, 30, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
-								attack2.Reset();
-								current_animation = &attack2;
+								attack2Left.Reset();
+								current_animation = &attack2Left;
 							}
 						}
 						else
@@ -241,13 +241,13 @@ bool Enemy::Update2()
 					{
 						if (facing == RIGHT)
 						{
-							if (current_animation != &attack2)
+							if (current_animation != &attack2Left)
 							{
 								App->particles->AddParticle(App->particles->shuriken, position.x + 25, position.y + 10, 3, COLLIDER_ENEMY_SHOT);
 								attacking = true;
-								attack2.Reset();
+								attack2Left.Reset();
 								attackCollider = App->collision->AddCollider({ position.x + 30, position.y + 20, 30, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
-								current_animation = &attack2;
+								current_animation = &attack2Left;
 							}
 						}
 						else
@@ -357,6 +357,7 @@ bool Enemy::Update2()
 		break;
 
 	case KNOCKED:
+		cont += 1;
 		if (facing == RIGHT)
 		{
 			if (App->player->sameDirection)
@@ -384,6 +385,9 @@ bool Enemy::Update2()
 				setCurrentAnimation(&beingHit6);
 			}
 		}
+
+		if (cont == 2) status = DEAD;
+
 		break;
 
 	case DEAD:
@@ -424,51 +428,6 @@ void Enemy::spawn()
 	status = IDLE;
 	
 }
-/*
-void Enemy::hit(Entity* c2) {
-
-	if (hitTimer.getDelta() < 500) {
-		++consecutiveHits;
-	}
-
-	else consecutiveHits = 0;
-
-	if (c2->position.x > position.x) {
-		c2->facing = LEFT;
-	}
-	else {
-		c2->facing = RIGHT;
-	}
-	if (height > 0 || c2->height > 0) {
-		c2->setCurrentAnimation(&(c2->beingHit3));
-		c2->status = BEING_HIT_2_INI;
-	}
-	else {
-		switch (consecutiveHits) {
-		case 0:
-		case 1:
-			this->setCurrentAnimation(&chop);
-			this->status = ATTACKING;
-			c2->setCurrentAnimation(&(c2->beingHit));
-			c2->status = BEING_HIT;
-			break;
-		case 2:
-			this->setCurrentAnimation(&kick);
-			this->status = ATTACKING;
-			c2->setCurrentAnimation(&(c2->beingHit2));
-			c2->status = BEING_HIT;
-			break;
-		case 3:
-			this->setCurrentAnimation(&chop);
-			this->status = ATTACKING;
-			c2->setCurrentAnimation(&(c2->beingHit3));
-			c2->status = BEING_HIT_2_INI;
-			break;
-		}
-		hitTimer.reset();
-		c2->beingHitTimer.reset();
-	}
-}*/
 
 bool Enemy::isAttacking() const {
 	return (status == ATTACKING || status == ATTACK_JMP);
@@ -486,200 +445,6 @@ void Enemy::setCurrentAnimation(Animation* anim) {
 		current_animation = anim;
 	}
 }
-/*
-void Enemy::handleState()
-{
-	switch (status) {
-	case UNKNOWN:
-		//if (App->scene_stage->stageState == LEVEL)
-		spawn();
-		break;
 
-	case RESPAWNING:
-		setCurrentAnimation(&respawning);
-		if (height > 0)
-			verticalForce += 0.3f;
-		else {
-			respawning.speed = 1.0f;
-			if (EnemyTimer.getDelta() >= 100) {
-				status = IDLE;
-				setCurrentAnimation(&idle);
-			}
-		}
-		break;
 
-	case IDLE:
-		if (velocity.x != 0.0f || velocity.y != 0.0f) {
-			status = WALK;
-			setCurrentAnimation(&walking);
-		}
-		break;
 
-	case WALK:
-		if (velocity.x > 0) facing = RIGHT;
-		else if (velocity.x < 0) facing = LEFT;
-		if (velocity.x == 0.0f && velocity.y == 0.0f) {
-			status = IDLE;
-			setCurrentAnimation(&idle);
-		}
-		break;
-
-	case JUMP_INI:
-		if (jumpTimer.getDelta() >= 100) {
-			verticalForce = -8.0f;
-			jumping.speed = 1.0f;
-			height = 0;
-			status = JUMPING;
-		}
-		break;
-
-	case JUMPING:
-		if (height > 0) {
-			verticalForce += 0.5f;
-		}
-		else {
-			jumping.speed = 0.0f;
-			jumping.Reset();
-			prevVelocity = velocity;
-			velocity.y = 0.0f;
-			velocity.x = 0.0f;
-			status = JUMP_END;
-			jumpTimer.reset();
-		}
-		break;
-
-	case ATTACK_JMP:
-		if (height > 0)
-			verticalForce += 0.5f;
-		else {
-			jumping.speed = 0.0f;
-			jumping.Reset();
-			prevVelocity = velocity;
-			velocity.y = 0.0f;
-			velocity.x = 0.0f;
-			setCurrentAnimation(&jumping);
-			status = JUMP_END;
-			jumpTimer.reset();
-		}
-		break;
-
-	case ATTACKING:
-		if (attackTimer.getDelta() >= chop.frames.size() * 100) {
-			velocity += prevVelocity;
-			if (velocity.x != 0.0f || velocity.y != 0.0f) {
-				status = WALK;
-				setCurrentAnimation(&walking);
-			}
-			else {
-				status = IDLE;
-				setCurrentAnimation(&idle);
-			}
-		}
-		break;
-
-	case JUMP_END:
-		if (jumpTimer.getDelta() >= 100) {
-			velocity += prevVelocity;
-			if (velocity.x != 0.0f || velocity.y != 0.0f) {
-				status = WALK;
-				setCurrentAnimation(&walking);
-			}
-			else {
-				status = IDLE;
-				setCurrentAnimation(&idle);
-			}
-		}
-		break;
-
-	case BEING_HIT:
-		if (beingHitTimer.getDelta() >= 300) {
-			status = IDLE;
-			setCurrentAnimation(&idle);
-		}
-		break;
-
-	case BEING_HIT_2_INI:
-		verticalForce = -5.0f;
-		if (facing == RIGHT) {
-			horizontalForce = -5.0f;
-		}
-		else {
-			horizontalForce = 5.0f;
-		}
-		status = BEING_HIT_2;
-		break;
-
-	case BEING_HIT_2:
-		if (height > 0) {
-			verticalForce += 0.5f;
-		}
-		else {
-			verticalForce = 0;
-			horizontalForce = 0;
-			status = BEING_HIT_2_END;
-			beingHitTimer.reset();
-		}
-		break;
-
-	case BEING_HIT_2_END:
-		if (beingHitTimer.getDelta() >= (gettingUp.frames.size() - 1) * 10 / gettingUp.speed + 1100) {
-			// remember to check that it might be dead
-			status = IDLE;
-			setCurrentAnimation(&idle);
-		}
-		else if (beingHitTimer.getDelta() >= 400) {
-			setCurrentAnimation(&gettingUp);
-		}
-		else setCurrentAnimation(&knockedOut);
-		break;
-	}
-}*/
-
-/*void Enemy::updatePosition() {
-	if (status == IDLE || status == WALK || status == JUMPING || status == ATTACK_JMP)
-		position.x += (int)velocity.x;
-	if (position.x < 0)
-		position.x = 0;
-	if (height == 0 && status != JUMPING && status != ATTACKING && status != BEING_HIT_2
-		&& status != BEING_HIT_2_END && status != BEING_HIT && status != BEING_HIT_2_INI)
-		depth -= (int)velocity.y;
-	if (status == IDLE || status == WALK)
-		position.y += (int)velocity.y;
-	if (status == RESPAWNING || status == JUMPING || status == ATTACK_JMP || status == BEING_HIT_2) {
-		height -= (int)verticalForce;
-		position.x += (int)horizontalForce;
-		if (height < 0) {
-			height = 0;
-			verticalForce = 0.0f;
-		}
-		position.y += (int)verticalForce;
-	}
-	if (depth > 53) {
-		position.y = 102;
-		depth = 53;
-	}
-	if (depth < 0 || position.y > 155) {
-		position.y = 155;
-		depth = 0;
-	}
-	if (status == IDLE || status == WALK)
-		position.y = 155 - depth - height;
-}*/
-
-/*void Enemy::paint()
-{
-	// Update colliders in here (in order to use the same SDL_Rect as Blit)
-	bool flip = false;
-	Frame currentFrame = current_animation->GetCurrentFrame();
-	int offset = currentFrame.offset;
-
-	if (facing == LEFT) {
-		flip = true;
-		offset = currentFrame.rect.w - idle.frames.front().rect.w - offset;
-	}
-	App->renderer->Blit(graphics, position.x - offset, position.y, &(currentFrame.rect), flip);
-	if (baseCollider != nullptr) {
-		baseCollider->rect = currentFrame.rect;
-		baseCollider->SetPos(position.x - offset, position.y);
-	}
-}*/

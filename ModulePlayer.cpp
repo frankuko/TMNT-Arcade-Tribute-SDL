@@ -200,8 +200,8 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	hitBehind2.frames.push_back({ 425,770,85,77 });
 	hitBehind2.frames.push_back({ 510,770,85,77 });
 	hitBehind2.frames.push_back({ 595,770,85,77 });
-	hitBehind2.frames.push_back({ 680,770,85,77 });
-	hitBehind2.frames.push_back({ 765,770,85,77 });
+	//hitBehind2.frames.push_back({ 680,770,85,77 });
+	//hitBehind2.frames.push_back({ 765,770,85,77 });
 	hitBehind2.loop = true;
 	hitBehind2.speed = 0.15f;
 
@@ -233,7 +233,7 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("TMNT/arcade-transparente.png");
 
 	destroyed = false;
-	position.x = 150;
+	position.x = 30;
 	position.y = 120;
 
 	collider = App->collision->AddCollider({ position.x, position.y,40,50 }, COLLIDER_PLAYER, this);
@@ -432,6 +432,15 @@ update_status ModulePlayer::Update()
 			break;
 		}
 
+		/*if (facing == RIGHT)
+		{
+			weaponCollider = App->collision->AddCollider({ position.x + 50, position.y + 60, 30, 5 }, COLLIDER_PLAYER_WEAPON, this);
+		}
+		else
+		{
+			weaponCollider = App->collision->AddCollider({ position.x + 5, position.y + 60, 30, 5 }, COLLIDER_PLAYER_WEAPON, this);
+		}*/
+
 		 
 
 		break;
@@ -466,7 +475,8 @@ update_status ModulePlayer::Update()
 
 	case DEAD:
 
-		setCurrentAnimation(&hitBehind3);
+		setCurrentAnimation(&hitBehind2);
+		//destroyed = true;
 		if (current_animation->Finished())
 		{
 			destroyed = true;
@@ -519,7 +529,7 @@ update_status ModulePlayer::Update()
 	else 
 	{
 		hits = 0;
-		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level, 0.7f);
+		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level,0.5f);
 	}
 		
 	
@@ -535,7 +545,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (destroyed == true)
 	{
 		hits = 0;
-		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level,0.7f);
+	//	App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level,0.5f);
 		//App->CleanUp();
 		//destroyed = true;
 		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
