@@ -64,17 +64,6 @@ ModulePlayer::ModulePlayer(bool active) : Module(active)
 	right.loop = true;
 	right.speed = 0.15f;
 
-	// move right TODO
-	/*down.frames.push_back({ 927,537,103,75 });
-	down.frames.push_back({ 0,636,103,75 });
-	down.frames.push_back({ 103,636,103,75 });
-	down.frames.push_back({ 206,636,103,75 });
-	down.frames.push_back({ 309,636,103,75 });
-	down.frames.push_back({ 412,636,103,75 });
-	down.frames.push_back({ 515,636,103,75 });
-	down.frames.push_back({ 618,636,103,75 });
-	down.loop = true;
-	down.speed = 0.15f;*/
 
 	kick.frames.push_back({ 255,0,85,77 });
 	kick.frames.push_back({ 340,0,85,77 });
@@ -419,6 +408,22 @@ update_status ModulePlayer::Update()
 
 		break;
 
+	case KNOCKED:
+		setCurrentAnimation(&hit1);
+		hits += 1;
+		//
+		if (hits >= 5*50)
+		{
+			stateMachine = DEAD;
+			break;
+		}
+
+		if (current_animation->Finished())
+		{
+
+			stateMachine = IDLE;
+			break;
+		}
 	case ATTACKING:
 		if (current_animation->Finished()) 
 		{
@@ -426,6 +431,8 @@ update_status ModulePlayer::Update()
 			stateMachine = IDLE;
 			break;
 		}
+
+		 
 
 		break;
 	case ATTACKING_2:
@@ -455,6 +462,20 @@ update_status ModulePlayer::Update()
 		}
 
 		break;
+
+
+	case DEAD:
+
+		setCurrentAnimation(&hitBehind3);
+		if (current_animation->Finished())
+		{
+			destroyed = true;
+			//stateMachine = IDLE;
+			break;
+		}
+
+
+
 	default:
 		break;
 	}
@@ -495,6 +516,11 @@ update_status ModulePlayer::Update()
 
 
 	}
+	else 
+	{
+		hits = 0;
+		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level, 0.7f);
+	}
 		
 	
 		
@@ -506,12 +532,14 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	/*if (destroyed == false)
+	if (destroyed == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_space,0.5f);
-		destroyed = true;
+		hits = 0;
+		App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level,0.7f);
+		//App->CleanUp();
+		//destroyed = true;
 		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
-	}*/
+	}
 
 	//left
 	if ((c1->rect.x < c2->rect.x + c2->rect.w) && ((c2->rect.x + c2->rect.w) - c1->rect.x) < c1->rect.w && ((c2->rect.y + c2->rect.h) - c1->rect.y) >4 && (c2->rect.y - (c1->rect.h + c1->rect.y)) <-4 && (c2->type == COLLIDER_WALL) && (c1->type == COLLIDER_PLAYER_FEET))

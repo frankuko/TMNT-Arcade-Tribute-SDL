@@ -31,11 +31,11 @@ bool ModuleSceneLevel::Start()
 
 	App->audio->PlayMusic("TMNT/stage1.ogg", 1.0f);
 
-/*
+
 	iPoint posEnemy;
-	posEnemy.x = 60;
+	posEnemy.x = 150;
 	posEnemy.y = 100;
-	App->enemy->AddEnemy(App->enemy->enemy1, posEnemy, Enemy::PURPLE);*/
+	App->enemy->AddEnemy(App->enemy->enemy1, posEnemy, Enemy::PURPLE);
 
 	App->collision->AddCollider({ 0,0,1350, 130 }, COLLIDER_WALL, this);
 
@@ -80,7 +80,7 @@ bool ModuleSceneLevel::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
-	App->enemy->Enable();
+	App->enemy->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 

@@ -14,20 +14,47 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	//ENEMY 1
 
 	//going left
-	enemy1.walkingLeft.frames.push_back({ 172, 80, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 96, 80, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 19, 80, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 337, 0, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 253, 0, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 176, 0, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 98, 0, 52, 64 });
-	enemy1.walkingLeft.frames.push_back({ 17, 0, 52, 64 });
+
+
+	/*enemy1.walkingLeft.frames.push_back({ 0, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 80, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 160, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 240, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 320, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 0, 80, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 80, 80, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 160, 80, 80, 80 });*/
+
+
+	enemy1.walkingLeft.frames.push_back({ 160, 80, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 80, 80, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 0, 80, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 320, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 240, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 160, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 80, 0, 80, 80 });
+	enemy1.walkingLeft.frames.push_back({ 0, 0, 80, 80 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
 	enemy1.walkingLeft.pivotY = -5;
 	enemy1.walkingLeft.loop = true;
 	enemy1.walkingLeft.speed = 0.2f;
 
 	//going right
-	enemy1.walkingRight.frames.push_back({ 589, 80, 52, 64 });
+	/*enemy1.walkingRight.frames.push_back({ 589, 80, 52, 64 });
 	enemy1.walkingRight.frames.push_back({ 671, 80, 52, 64 });
 	enemy1.walkingRight.frames.push_back({ 757, 80, 52, 64 });
 	enemy1.walkingRight.frames.push_back({ 433, 0, 52, 64 });
@@ -37,17 +64,17 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	enemy1.walkingRight.frames.push_back({ 751, 0, 52, 64 });
 	enemy1.walkingRight.pivotY = -5;
 	enemy1.walkingRight.loop = true;
-	enemy1.walkingRight.speed = 0.2f;
+	enemy1.walkingRight.speed = 0.2f;*/
 
 	//going upLeft
-	enemy1.upLeft.frames.push_back({ 14, 240, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 333, 160, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 252, 160, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 176, 160, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 96, 160, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 17, 160, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 336, 81, 52, 64 });
-	enemy1.upLeft.frames.push_back({ 256, 81, 52, 64 });
+	enemy1.upLeft.frames.push_back({ 0, 240, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 320, 160, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 240, 160, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 160, 160, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 80, 160, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 0, 160, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 320, 80, 80, 80 });
+	enemy1.upLeft.frames.push_back({ 240, 80, 80, 80 });
 	enemy1.upLeft.pivotY = -5;
 	enemy1.upLeft.loop = true;
 	enemy1.upLeft.speed = 0.2f;
@@ -74,9 +101,9 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	enemy1.attack1.speed = 0.07f;
 
 	//attack1Left
-	enemy1.attack1Left.frames.push_back({ 161, 643, 60, 64 });
-	enemy1.attack1Left.frames.push_back({ 91, 643, 60, 64 });
 	enemy1.attack1Left.frames.push_back({ 16, 643, 60, 64 });
+	enemy1.attack1Left.frames.push_back({ 80, 643, 60, 64 });
+	enemy1.attack1Left.frames.push_back({ 0, 643, 60, 64 });
 	enemy1.attack1Left.pivotY = -10;
 	enemy1.attack1Left.loop = false;
 	enemy1.attack1Left.speed = 0.07f;
@@ -184,7 +211,7 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	enemy2.walkingLeft.speed = 0.2f;
 
 	//going right
-	enemy2.walkingRight.frames.push_back({ 589, 80, 52, 64 });
+	/*enemy2.walkingRight.frames.push_back({ 589, 80, 52, 64 });
 	enemy2.walkingRight.frames.push_back({ 671, 80, 52, 64 });
 	enemy2.walkingRight.frames.push_back({ 757, 80, 52, 64 });
 	enemy2.walkingRight.frames.push_back({ 433, 0, 52, 64 });
@@ -194,7 +221,7 @@ ModuleEnemy::ModuleEnemy(bool active) : Module(active)
 	enemy2.walkingRight.frames.push_back({ 751, 0, 52, 64 });
 	enemy2.walkingRight.pivotY = -5;
 	enemy2.walkingRight.loop = true;
-	enemy2.walkingRight.speed = 0.2f;
+	enemy2.walkingRight.speed = 0.2f;*/
 
 	//going upLeft
 	enemy2.upLeft.frames.push_back({ 14, 240, 52, 64 });
@@ -333,7 +360,7 @@ ModuleEnemy::~ModuleEnemy()
 bool ModuleEnemy::Start()
 {
 	LOG("Loading enemies");
-	enemy1.graphics = App->textures->Load("TMNT/purple.png");
+	enemy1.graphics = App->textures->Load("TMNT/purple-trans.png");
 	enemy2.graphics = App->textures->Load("TMNT/orange.png");
 
 	return true;
@@ -360,7 +387,7 @@ update_status ModuleEnemy::Update()
 		}
 		else
 		{
-			if (e->Update() == false)
+			if (e->Update2() == false)
 			{
 				RELEASE(*it);
 				it = active.erase(it);
@@ -370,7 +397,12 @@ update_status ModuleEnemy::Update()
 				e->feetCollider->SetPos(e->position.x + 10, e->position.y + 50);
 				e->baseCollider->SetPos(e->position.x + 10, e->position.y + 5);
 				//posibles fallos, current animation y graphics
-				App->renderer->Blit(e->graphics, e->position.x, e->position.y - e->current_animation->pivotY, &(e->current_animation->GetCurrentFrame()));
+
+				if(e->facing == Enemy::RIGHT)
+					App->renderer->Blit(e->graphics, e->position.x, e->position.y - e->current_animation->pivotY, &(e->current_animation->GetCurrentFrame()),1,true);
+				else
+					App->renderer->Blit(e->graphics, e->position.x, e->position.y - e->current_animation->pivotY, &(e->current_animation->GetCurrentFrame()));
+
 				++it;
 			}
 		}
@@ -380,9 +412,9 @@ update_status ModuleEnemy::Update()
 
 bool ModuleEnemy::CleanUp()
 {
-	LOG("Unloading particles");
-	if (enemy1.graphics != NULL)
-		App->textures->Unload(enemy1.graphics);
+	LOG("Unloading enemies");
+	/*if (enemy1.graphics != NULL)
+		App->textures->Unload(enemy1.graphics);*/
 
 	for (list<Enemy*>::iterator it = active.begin(); it != active.end(); ++it)
 		RELEASE(*it);
@@ -410,6 +442,9 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 	for (list<Enemy*>::iterator it = active.begin(); it != active.end();)
 	{
 		Enemy* aux = *it;
+
+
+		/*
 		if (App->player->jumped)
 		{
 			if (c2->type == COLLIDER_PLAYER_WEAPON && c1 == aux->baseCollider && aux->status != Enemy::KNOCKED)
@@ -452,7 +487,7 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
-		}
+		}*/
 		++it;
 	}
 }

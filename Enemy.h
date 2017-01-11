@@ -61,7 +61,7 @@ public:
 	Animation up;
 	Animation upLeft;
 	Animation waiting;
-	Animation walkingRight;
+//	Animation walkingRight;
 	Animation walkingLeft;
 	Animation jumping;
 	Animation jumpKick;

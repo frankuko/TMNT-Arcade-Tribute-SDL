@@ -60,17 +60,19 @@ bool Enemy::Update2()
 		}
 		break;
 
-	case JUMPING:
-		break;
 	case WALKUP:
 		if (abs(App->player->position.x - position.x) <= SCREEN_WIDTH / 4)
 		{
+			if ((App->player->position.x - position.x) < 0)
+				facing = LEFT;
+			else
+				facing = RIGHT;
+
 			if ((App->player->position.y - position.y) < 0)
 			{
-
+				
 				velocity.y = -1;
-				if (facing == RIGHT) setCurrentAnimation(&up);
-				else setCurrentAnimation(&upLeft);
+				setCurrentAnimation(&walkingLeft);
 
 			}
 			else
@@ -79,8 +81,7 @@ bool Enemy::Update2()
 				{
 
 					velocity.y = 1;
-					if (facing == RIGHT) setCurrentAnimation(&walkingRight);
-					else setCurrentAnimation(&walkingLeft);
+					setCurrentAnimation(&walkingLeft);
 
 				}
 				else
@@ -97,20 +98,19 @@ bool Enemy::Update2()
 			if ((App->player->position.x - position.x) < 0)
 			{
 				facing = LEFT;
-				//SI EL JUGADOR ESTA EN EL SUELO
-				if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
+				/*if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 				{
 					facing = RIGHT;
-					setCurrentAnimation(&walkingRight);
+					setCurrentAnimation(&walkingLeft);
 					velocity.x = 1;
 					break;
 				}
-				else
-					if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
-					{
-						status = ATTACKING;
-						break;
-					}
+				else*/
+				if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
+				{
+					status = ATTACKING;
+					break;
+				}
 				if ((abs(App->player->position.x - position.x) <= 25))
 				{
 					status = ATTACKING;
@@ -124,14 +124,15 @@ bool Enemy::Update2()
 				if ((App->player->position.x - position.x) > 0)
 				{
 					facing = RIGHT;
-					if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
+					/*if (App->player->stateMachine == KNOCKED && abs(App->player->position.x - position.x) <= 150)
 					{
 						facing = LEFT;
 						velocity.x = -1; //OJO CUIDAO
 						setCurrentAnimation(&walkingLeft);
 						break;
 					}
-					else if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
+					else*/ 
+					if (abs(App->player->position.x - position.x) <= 100 && abs(App->player->position.x - position.x) > 90)
 					{
 						status = ATTACKING;
 						break;
@@ -143,7 +144,7 @@ bool Enemy::Update2()
 						break;
 					}
 					velocity.x = 1;
-					setCurrentAnimation(&walkingRight);
+					setCurrentAnimation(&walkingLeft);
 				}
 				else
 					status = IDLE;
@@ -165,7 +166,7 @@ bool Enemy::Update2()
 					App->player->sameDirection = false;
 					
 				attackCollider = App->collision->RemoveCollider(attackCollider);
-				App->player->hits += 1;
+				//App->player->hits += 1;
 
 			}
 
@@ -191,6 +192,7 @@ bool Enemy::Update2()
 						attackCollider = App->collision->AddCollider({ position.x + 30, position.y + 10, 45, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
 						attack1.Reset();
 						current_animation = &attack1;
+						App->player->stateMachine = ModulePlayer::KNOCKED;
 					}
 				}
 				else
@@ -201,6 +203,8 @@ bool Enemy::Update2()
 						attackCollider = App->collision->AddCollider({ position.x - 15, position.y + 20, 30, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
 						attack1Left.Reset();
 						current_animation = &attack1Left;
+
+						App->player->stateMachine = ModulePlayer::KNOCKED;
 					}
 				}
 			}
@@ -308,7 +312,7 @@ bool Enemy::Update2()
 		if ((current_animation == &attack1 || current_animation == &attack1Left || current_animation == &attack2 || current_animation == &attack2Left) && current_animation->Finished())
 		{
 			jumped = false;
-			current_animation = &walkingRight;
+			current_animation = &walkingLeft;
 			attacking = false;
 			status = IDLE;
 			if (attackCollider != nullptr)
