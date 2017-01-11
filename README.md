@@ -10,6 +10,7 @@ The player chooses from one of the four Ninja Turtles: Leonardo, Michelangelo, D
 In this tribute you play as Raphael, one of the 4 Ninja Turtles. You must defeat the purple ninja!
 
 ![](http://i.imgur.com/ZtEs9v7.png)
+
 ## Enemy
 
 This is the enemy, the purple ninja. Let's kick his a**!!
