@@ -30,3 +30,7 @@ This is the enemy, the purple ninja. Let's kick his a**!!
 ## Gameplay
 
 <iframe width="560" height="420" src="https://www.youtube.com/embed/8LcD753-Q_M"></iframe>
+
+## Download Latest Release
+
+https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/releases/tag/v1.0
