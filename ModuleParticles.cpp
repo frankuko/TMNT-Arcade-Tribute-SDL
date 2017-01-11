@@ -18,7 +18,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("TMNT/stage_animation.png");
+	graphics = App->textures->Load("TMNT/stage_animations2.png");
 
 	LOG("Loading particles");
 	//graphics = App->textures->Load("rtype/stagepart.png");
@@ -28,16 +28,16 @@ bool ModuleParticles::Start()
 	fire1.particle_anim.frames.push_back({ 335, 430, 304, 65 });
 	fire1.particle_anim.frames.push_back({ 17, 495, 304, 65 });
 	fire1.particle_anim.frames.push_back({ 335, 495, 304, 65 });
-	fire1.particle_anim.frames.push_back({ 17, 560, 304, 65 });
-	fire1.particle_anim.frames.push_back({ 335, 560, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 17, 565, 304, 65 });
+	fire1.particle_anim.frames.push_back({ 335, 565, 304, 65 });
 	fire1.particle_anim.frames.push_back({ 710, 533, 304, 65 });
 	fire1.particle_anim.frames.push_back({ 1029, 533, 304, 65 });
 	fire1.particle_anim.loop = true;
 	fire1.particle_anim.speed = 0.09f;
 
 	//fire2
-	fire2.particle_anim.frames.push_back({ 335, 560, 304, 65 });
-	fire2.particle_anim.frames.push_back({ 17, 560, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 335, 565, 304, 65 });
+	fire2.particle_anim.frames.push_back({ 17, 565, 304, 65 });
 	fire2.particle_anim.frames.push_back({ 335, 495, 304, 65 });
 	fire2.particle_anim.frames.push_back({ 17, 495, 304, 65 });
 	fire2.particle_anim.frames.push_back({ 335, 430, 304, 65 });
@@ -159,7 +159,7 @@ Particle::~Particle()
 {
 }
 
-bool Particle::Update()
+/*bool Particle::Update()
 {
 	bool ret = true;
 	particle_anim.Reset();
@@ -184,6 +184,20 @@ bool Particle::Update()
 	{
 		SDL_Rect r = particle_anim.GetCurrentFrame();
 		particle_collider->rect = { position.x,position.y,r.w,r.h };
+	}
+
+	return ret;
+}*/
+
+bool Particle::Update()
+{
+	bool ret = true;
+	position.x += speed.x;
+	position.y += speed.y;
+	if (particle_collider != nullptr)
+	{
+		SDL_Rect r = particle_anim.GetCurrentFrame();
+		particle_collider->rect = { position.x, position.y, r.w, r.h };
 	}
 
 	return ret;

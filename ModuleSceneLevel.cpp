@@ -41,21 +41,33 @@ bool ModuleSceneLevel::Start()
 
 	App->collision->AddCollider({ 0,SCREEN_HEIGHT,1350, 2 }, COLLIDER_WALL, this);
 
+	//168
+	App->particles->AddParticle(App->particles->fire2, 0, 190, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 0, 200, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 0, 180, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 0, 170, 0, COLLIDER_NONE);
 
-	App->particles->AddParticle(App->particles->fire1, 0, 157, 0,  COLLIDER_NONE);
-	App->particles->AddParticle(App->particles->fire2, 0, 168, 0,  COLLIDER_NONE);
 
-	App->particles->AddParticle(App->particles->fire1, 301, 157, 0,  COLLIDER_NONE);
-	App->particles->AddParticle(App->particles->fire2, 301, 168, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 300, 190, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 300, 200, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 300, 180, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 300, 170, 0, COLLIDER_NONE);
 
-	App->particles->AddParticle(App->particles->fire1, 602, 157, 0,  COLLIDER_NONE);
-	App->particles->AddParticle(App->particles->fire2, 602, 168, 0,  COLLIDER_NONE);
 
-	App->particles->AddParticle(App->particles->fire1, 903, 157, 0,  COLLIDER_NONE);
-	App->particles->AddParticle(App->particles->fire2, 903, 168, 0,  COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 600, 190, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 600, 200, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 600, 180, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 600, 170, 0, COLLIDER_NONE);
 
-	App->particles->AddParticle(App->particles->fire1, 1204, 157, 0,  COLLIDER_NONE);
-	App->particles->AddParticle(App->particles->fire2, 1204, 168, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 900, 190, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 900, 200, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 900, 180, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 900, 170, 0, COLLIDER_NONE);
+
+	App->particles->AddParticle(App->particles->fire2, 1200, 190, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 1200, 200, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire1, 1200, 180, 0, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->fire2, 1200, 170, 0, COLLIDER_NONE);
 
 
 	return true;

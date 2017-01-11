@@ -270,7 +270,7 @@ update_status ModulePlayer::Update()
 	if (destroyed)
 		return UPDATE_CONTINUE;
 
-	int speed = 1;
+	int speed = 2;
 
 
 //	stateMachine.Update();
