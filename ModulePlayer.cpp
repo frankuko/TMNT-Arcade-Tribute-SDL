@@ -13,22 +13,6 @@
 ModulePlayer::ModulePlayer(bool active) : Module(active)
 {
 
-	/*// idle animation (just the ship)
-	idle.frames.push_back({66, 1, 32, 14});
-
-
-	// move upwards
-	up.frames.push_back({100, 1, 32, 14});
-	up.frames.push_back({132, 0, 32, 14});
-	up.loop = false;
-	up.speed = 0.1f;
-
-	// Move down
-	down.frames.push_back({33, 1, 32, 14});
-	down.frames.push_back({0, 1, 32, 14});
-	down.loop = false;
-	down.speed = 0.1f;*/
-
 
 	// idle animation
 	idle.frames.push_back({ 0, 0, 85, 77 });
@@ -359,8 +343,6 @@ update_status ModulePlayer::Update()
 
 		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
-			/*// TODO 6: Shoot a laser using the particle system
-			App->particles->AddParticle(App->particles->laser, position.x+28, position.y, 0,COLLIDER_PLAYER_SHOT);	*/
 			stateMachine = JUMP_INI;
 			setCurrentAnimation(&jump);
 		}
@@ -431,15 +413,6 @@ update_status ModulePlayer::Update()
 			stateMachine = IDLE;
 			break;
 		}
-
-		/*if (facing == RIGHT)
-		{
-			weaponCollider = App->collision->AddCollider({ position.x + 50, position.y + 60, 30, 5 }, COLLIDER_PLAYER_WEAPON, this);
-		}
-		else
-		{
-			weaponCollider = App->collision->AddCollider({ position.x + 5, position.y + 60, 30, 5 }, COLLIDER_PLAYER_WEAPON, this);
-		}*/
 
 		 
 
@@ -545,10 +518,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (destroyed == true)
 	{
 		hits = 0;
-	//	App->fade->FadeToBlack((Module*)App->scene_intro, (Module*)App->scene_level,0.5f);
-		//App->CleanUp();
-		//destroyed = true;
-		//App->particles->AddParticle(App->particles->explosion, position.x, position.y,0);
+	
 	}
 
 	//left

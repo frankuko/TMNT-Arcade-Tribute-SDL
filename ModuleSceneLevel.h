@@ -18,7 +18,6 @@ public:
 public:
 
 	SDL_Texture* background = nullptr;
-	//SDL_Texture* stars = nullptr;
 };
 
 #endif /

@@ -159,35 +159,7 @@ Particle::~Particle()
 {
 }
 
-/*bool Particle::Update()
-{
-	bool ret = true;
-	particle_anim.Reset();
-	// TODO 5: This is the core of the particle functionality.
-	// Return false if the particle must be destroyed
-	if (time > 0)
-	{
-		if ((SDL_GetTicks() - born) > time)
-			ret = false;
-	}
-	else
-	{
-		if (particle_anim.Finished())
-			ret = false;
-	}
 
-	position.x += speed.x;
-	position.y += speed.y;
-
-
-	if (particle_collider != nullptr)
-	{
-		SDL_Rect r = particle_anim.GetCurrentFrame();
-		particle_collider->rect = { position.x,position.y,r.w,r.h };
-	}
-
-	return ret;
-}*/
 
 bool Particle::Update()
 {

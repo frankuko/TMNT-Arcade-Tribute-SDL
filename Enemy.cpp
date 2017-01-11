@@ -29,7 +29,7 @@ bool Enemy::Start()
 }
 
 
-bool Enemy::Update2()
+update_status Enemy::Update()
 {
 
 	velocity.SetToZero();
@@ -237,31 +237,7 @@ bool Enemy::Update2()
 							}
 						}
 					}
-					else
-					{
-						if (facing == RIGHT)
-						{
-							if (current_animation != &attack2Left)
-							{
-								App->particles->AddParticle(App->particles->shuriken, position.x + 25, position.y + 10, 3, COLLIDER_ENEMY_SHOT);
-								attacking = true;
-								attack2Left.Reset();
-								attackCollider = App->collision->AddCollider({ position.x + 30, position.y + 20, 30, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
-								current_animation = &attack2Left;
-							}
-						}
-						else
-						{
-							if (current_animation != &attack2Left)
-							{
-								App->particles->AddParticle(App->particles->shuriken, position.x - 25, position.y + 10, -3, COLLIDER_ENEMY_SHOT);
-								attacking = true;
-								attack2Left.Reset();
-								attackCollider = App->collision->AddCollider({ position.x - 30, position.y + 20, 30, 15 }, COLLIDER_ENEMY_WEAPON, (Module*)App->enemy);
-								current_animation = &attack2Left;
-							}
-						}
-					}
+				
 				}
 			}
 
@@ -403,27 +379,14 @@ bool Enemy::Update2()
 	}
 
 	position += velocity;
-	return true;
-}
-
-update_status Enemy::Update()
-{
-//	handleState();
-
-	if (status != IDLE) {
-		//updatePosition();
-		spawn();
-	}
-
 	return UPDATE_CONTINUE;
 }
+
 
 // Respawn player
 void Enemy::spawn()
 {
 	LOG("Spawning Enemy");
-	//position = initPos;
-	//height = 0;
 	setCurrentAnimation(&walkingLeft);
 	status = IDLE;
 	
