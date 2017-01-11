@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+# Arcade Tribute: Teenage Mutant Ninja Turtles (1989)
 
-You can use the [editor on GitHub](https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Release in 1989, [Teenage Mutant Ninja Turtles](https://en.wikipedia.org/wiki/Teenage_Mutant_Ninja_Turtles_(arcade_game)) was developed by Konami. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The player chooses from one of the four Ninja Turtles: Leonardo, Michelangelo, Donatello, and Raphael. After Shredder kidnaps the Turtles' friend April O'Neil and their mentor Splinter, they must give chase, save their comrades, and defeat the evil Shredder. 
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Player
 
-```markdown
-Syntax highlighted code block
+In this tribute you play as Raphael, one of the 4 Ninja Turtles. You must defeat the purple ninja!
 
-# Header 1
-## Header 2
-### Header 3
+![](http://i.imgur.com/ZtEs9v7.png)
+## Enemy
 
-- Bulleted
-- List
+This is the enemy, the purple ninja. Let's kick his a**!!
 
-1. Numbered
-2. List
+![](http://i.imgur.com/ALY6s66.png)
 
-**Bold** and _Italic_ and `Code` text
+## Controls
 
-[Link](url) and ![Image](src)
-```
+- To enter the game, press the SPACE key.
+- Move Turtle up: W
+- Move Turtle down: S
+- Move Turtle right: D
+- Move Turtle left: A
+- Jump: SPACE
+- Attack: Q,V,N,M
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Gameplay
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<iframe width="560" height="420" src="https://www.youtube.com/embed/8LcD753-Q_M"></iframe>
