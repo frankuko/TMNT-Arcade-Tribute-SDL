@@ -33,4 +33,4 @@ This is the enemy, the purple ninja. Let's kick his a**!!
 
 ## Download Latest Release
 
-https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/releases/tag/v1.0
+[https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/releases/tag/v1.0](https://github.com/frankuko/TMNT-Arcade-Tribute-SDL/releases/tag/v1.0)
